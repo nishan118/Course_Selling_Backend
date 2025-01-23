@@ -1,9 +1,32 @@
 import express from "express";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import courseRouter from "./routes/course.route.js"
+dotenv.config();
+
 const app = express();
-app.get("/",(req,res)=>{
-    console.log("server is running");
-    res.json({
-        message:"Server is running"
-    });
+app.use(express.json());
+const port=process.env.PORT || 3000;
+const DB_URI=process.env.MONGO_URI;
+
+//courseRouter
+app.use("/api/v1/course",courseRouter);
+app.use("/api/v1/course",courseRouter);
+
+
+//function to connect the database
+async function main(){
+    await mongoose.connect(DB_URI);
+}
+
+
+app.listen(port,()=>{
+    console.log(`server is running on this port ${port} `);
 });
-app.listen(8000);
+
+//function call for connect the database
+main();
+
+
+
+
