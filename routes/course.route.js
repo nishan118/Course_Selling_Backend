@@ -1,11 +1,13 @@
 import express from "express";
-import { createCourse,getCourse  } from "../controller/course.controller.js";
+import { courseDetails, createCourse,deleteCourse,getCourse,updateCourse  } from "../controller/course.controller.js";
 
 const courseRouter = express.Router();
 
-courseRouter.get("/get",getCourse );
+courseRouter.get("/courses",getCourse );
+courseRouter.get("/:courseId",courseDetails);
 courseRouter.post("/create", createCourse);
-
+courseRouter.put("/update/:courseId",updateCourse);
+courseRouter.delete("/delete/:courseId",deleteCourse);
 export default courseRouter;
 
 
