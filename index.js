@@ -6,11 +6,13 @@ import fileUpload from "express-fileupload";
 import courseRouter from "./routes/course.route.js"
 import adminRouter from "./routes/admin.route.js";
 import userRouter from "./routes/user.route.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 // code for file upload
 app.use(fileUpload({
     useTempFiles:true,

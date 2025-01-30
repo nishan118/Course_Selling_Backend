@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
-const Schema=mongoose.Schema;
 
-
-const courseSchema =new Schema({
+const courseSchema =new mongoose.Schema({
     title:{
         type:String,
         required:true
@@ -25,6 +23,10 @@ const courseSchema =new Schema({
             required:true
         }
 
+    },
+    creatorId:{
+        type:mongoose.Types.ObjectId,
+        ref:"adminModel",
     }
     
 })
